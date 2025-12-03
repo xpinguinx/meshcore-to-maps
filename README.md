@@ -163,30 +163,20 @@ Lista dispositivi USB:
 lsusb
 Porte seriali USB:
 
-bash
-Copia codice
 ls /dev/ttyUSB* /dev/ttyACM*
 Nomi stabili e leggibili:
 
-bash
-Copia codice
 ls -l /dev/serial/by-id
 ls -l /dev/serial/by-path
 Capire quale porta ha impegnato il device (subito dopo averlo collegato):
 
-bash
-Copia codice
 dmesg | tail -n 20
 <h3>Passaggio 5 – Avvio e verifica di meshcore-mctomqtt</h3> <h4>5.1 – Test manuale del programma</h4>
 Con il virtualenv attivo e nella cartella del progetto:
 
-bash
-Copia codice
 python mctomqtt.py
 oppure:
 
-bash
-Copia codice
 chmod +x run_mctomqtt.sh
 ./run_mctomqtt.sh
 Se il programma parte senza errori, puoi procedere con la creazione del servizio systemd.
