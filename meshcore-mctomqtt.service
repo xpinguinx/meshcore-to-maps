@@ -1,0 +1,22 @@
+[Unit]
+Description=MeshCore Repeater → MQTT bridge (mctomqtt)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=meshcore
+Group=meshcore
+WorkingDirectory=/home/meshcore/meshcore-to-maps
+ExecStart=/home/meshcore/meshcore-to-maps/run_mctomqtt.sh
+
+Restart=always
+RestartSec=5
+
+Environment="PATH=/home/meshcore/meshcore-to-maps/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
