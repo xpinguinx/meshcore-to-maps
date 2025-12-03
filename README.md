@@ -107,125 +107,187 @@ Dopo il flashing:
 
 ---
 
-<h3>Passaggio 3 – Installazione di meshcore-to-maps (Linux)</h3>
-
-<strong>Requisiti hardware/software:</strong>
-
-- Raspberry Pi Zero 2W, Pi 3, Pi 4, Pi 5 oppure MiniPC
-- Sistema operativo:
-  - Raspberry Pi OS Lite
-  - Ubuntu 22.x, 24.x
-  - Debian 12, 13
-
-Di seguito i comandi di installazione (si assume un utente Linux chiamato <code>meshcore</code>).
+<h3>Passaggio 3 – Installazione e configurazione di meshcore-to-maps</h3>
 
 <h4>3.1 – Installare i pacchetti di base</h4>
-
-```bash
-sudo apt update
+<pre><code>sudo apt update
 sudo apt install -y git python3 python3-venv python3-pip
+</code></pre>
+
 <h4>3.2 – Clonare il repository</h4>
-cd /home/meshcore
+<pre><code>cd /home/meshcore
 git clone https://github.com/xpinguinx/meshcore-to-maps.git
 cd meshcore-to-maps
+</code></pre>
+
 <h4>3.3 – Creare e attivare l’ambiente Python (virtualenv)</h4>
-cd ~/meshcore-to-maps
+<pre><code>cd ~/meshcore-to-maps
 
 # crea un virtualenv nella cartella venv (se non esiste già)
 python3 -m venv venv
 
 # attiva il virtualenv
 source venv/bin/activate
+</code></pre>
+
 <h4>3.4 – Installare le dipendenze Python</h4>
-pip install --upgrade pip
+<pre><code>pip install --upgrade pip
 pip install -r requirements.txt
+</code></pre>
+
 <h4>3.5 – Configurare le variabili ambiente (.env.local)</h4>
-nano .env.local
-Compilare i parametri richiesti in base alle proprie esigenze (vedi il <em>Passaggio 4</em>).
+<pre><code>nano .env.local
+</code></pre>
+<p>
+Compilare i parametri richiesti in base alle proprie esigenze (vedi il
+<em>Passaggio 4</em>).
+</p>
 
-<h3>Passaggio 4 – Configurazione del file .env.local</h3>
-Il parametro principale da verificare è:
-MCTOMQTT_SERIAL_PORTS=
+<hr>
+
+<h3>Passaggio 4 – Configurazione del file <code>.env.local</code></h3>
+
+<p>Il parametro principale da verificare è:</p>
+
+<pre><code>MCTOMQTT_SERIAL_PORTS=
+</code></pre>
+
+<p>
 Questa variabile indica la porta seriale dove è collegato il repeater MeshCore.
+</p>
 
-Esempi:
+<p>Esempi:</p>
 
-MCTOMQTT_SERIAL_PORTS=/dev/ttyUSB0
+<pre><code>MCTOMQTT_SERIAL_PORTS=/dev/ttyUSB0
 # oppure
 MCTOMQTT_SERIAL_PORTS=/dev/ttyACM0
-<strong>Tutti gli altri parametri</strong> non dovrebbero essere modificati, pena il mancato funzionamento del servizio.
+</code></pre>
+
+<p>
+<strong>Tutti gli altri parametri</strong> non dovrebbero essere modificati,
+pena il mancato funzionamento del servizio.
+</p>
 
 <h4>4.1 – Come identificare la porta seriale corretta</h4>
-Alcuni comandi utili in Linux:
 
-Lista dispositivi USB:
+<p>Alcuni comandi utili in Linux:</p>
 
-lsusb
-Porte seriali USB:
+<p><strong>Lista dispositivi USB:</strong></p>
+<pre><code>lsusb
+</code></pre>
 
-ls /dev/ttyUSB* /dev/ttyACM*
-Nomi stabili e leggibili:
+<p><strong>Porte seriali USB:</strong></p>
+<pre><code>ls /dev/ttyUSB* /dev/ttyACM*
+</code></pre>
 
-ls -l /dev/serial/by-id
+<p><strong>Nomi stabili e leggibili:</strong></p>
+<pre><code>ls -l /dev/serial/by-id
 ls -l /dev/serial/by-path
-Capire quale porta ha impegnato il device (subito dopo averlo collegato):
+</code></pre>
 
-dmesg | tail -n 20
-<h3>Passaggio 5 – Avvio e verifica di meshcore-mctomqtt</h3> <h4>5.1 – Test manuale del programma</h4>
-Con il virtualenv attivo e nella cartella del progetto:
+<p><strong>Capire quale porta ha impegnato il device</strong>
+(subito dopo averlo collegato):</p>
+<pre><code>dmesg | tail -n 20
+</code></pre>
 
-python mctomqtt.py
-oppure:
+<hr>
 
-chmod +x run_mctomqtt.sh
+<h3>Passaggio 5 – Avvio e verifica di meshcore-mctomqtt</h3>
+
+<h4>5.1 – Test manuale del programma</h4>
+
+<p>Con il virtualenv attivo e nella cartella del progetto:</p>
+
+<pre><code>python mctomqtt.py
+</code></pre>
+
+<p>oppure:</p>
+
+<pre><code>chmod +x run_mctomqtt.sh
 ./run_mctomqtt.sh
-Se il programma parte senza errori, puoi procedere con la creazione del servizio systemd.
+</code></pre>
+
+<p>
+Se il programma parte senza errori, puoi procedere con la creazione del servizio
+<code>systemd</code>.
+</p>
 
 <h4>5.2 – Copiare il service file</h4>
-cd ~/meshcore-to-maps
+<pre><code>cd ~/meshcore-to-maps
 sudo cp meshcore-mctomqtt.service /etc/systemd/system/
+</code></pre>
+
 <h4>5.3 – Modificare il service file (se necessario)</h4>
-bash
-Copia codice
-sudo nano /etc/systemd/system/meshcore-mctomqtt.service
-Controllare in particolare:
+<pre><code>sudo nano /etc/systemd/system/meshcore-mctomqtt.service
+</code></pre>
 
-la riga <code>User=</code> – deve essere l’utente che esegue il programma, ad esempio:
+<p>Controllare in particolare:</p>
 
-User=meshcore
-la riga <code>ExecStart=</code> – deve puntare al percorso corretto, ad esempio:
+<ul>
+  <li>
+    la riga <code>User=</code> – deve essere l’utente che esegue il programma,
+    ad esempio:
+    <pre><code>User=meshcore
+</code></pre>
+  </li>
+  <li>
+    la riga <code>ExecStart=</code> – deve puntare al percorso corretto,
+    ad esempio:
+    <pre><code>ExecStart=/home/meshcore/meshcore-to-maps/run_mctomqtt.sh
+</code></pre>
+  </li>
+</ul>
 
-ExecStart=/home/meshcore/meshcore-to-maps/run_mctomqtt.sh
-Salvare ed uscire dall’editor.
+<p>Salvare ed uscire dall’editor.</p>
 
 <h4>5.4 – Abilitare e avviare il servizio</h4>
-sudo systemctl daemon-reload
+
+<pre><code>sudo systemctl daemon-reload
 sudo systemctl enable meshcore-mctomqtt.service
 sudo systemctl start meshcore-mctomqtt.service
 sudo systemctl status meshcore-mctomqtt.service
-Per la visualizzazione dei log in tempo reale:
+</code></pre>
 
-sudo journalctl -u meshcore-mctomqtt.service -f
+<p>Per la visualizzazione dei log in tempo reale:</p>
+
+<pre><code>sudo journalctl -u meshcore-mctomqtt.service -f
+</code></pre>
+
+<hr>
+
 <h3>Passaggio 6 – Rappresentazione grafica/geografica dei nodi</h3>
-Se i passaggi precedenti sono stati eseguiti correttamente, dopo pochi secondi il nodo osservatore sarà pubblicato e visibile nella mappa geografica nazionale:
 
-👉 <a href="https://nodi.meshcoreitalia.it" target="_blank">https://nodi.meshcoreitalia.it</a>
+<p>
+Se i passaggi precedenti sono stati eseguiti correttamente, dopo pochi secondi
+il nodo osservatore sarà pubblicato e visibile nella mappa geografica nazionale:
+</p>
 
-Ricorda che:
+<p>
+👉 <a href="https://nodi.meshcoreitalia.it" target="_blank">
+https://nodi.meshcoreitalia.it
+</a>
+</p>
 
-il nodo osservatore deve essere correttamente configurato e online;
+<p>Ricorda che:</p>
 
-è necessario eseguire il comando <strong><code>advert</code></strong> sul nodo per annunciare la sua presenza alla rete mesh.
+<ul>
+  <li>il nodo osservatore deve essere correttamente configurato e online;</li>
+  <li>
+    è necessario eseguire il comando
+    <strong><code>advert</code></strong> sul nodo per annunciare la sua presenza
+    alla rete mesh.
+  </li>
+</ul>
 
-Lo stesso vale per qualsiasi altro nodo che esegue il comando <code>advert</code>:
-con questo comando il nodo annuncia alla rete mesh la propria esistenza (nuovo nodo, nodo appena acceso o appena riconfigurato).
+<p>
+Lo stesso vale per qualsiasi altro nodo che esegue il comando
+<code>advert</code>: con questo comando il nodo annuncia alla rete mesh la
+propria esistenza (nuovo nodo, nodo appena acceso o appena riconfigurato).
+</p>
 
-<p align="center"> <em>Per supporto o richieste di firmware personalizzati: <a href="mailto:info@meshcoreitalia.it">info@meshcoreitalia.it</a></em> </p> ```
-Se vuoi, nel messaggio dopo posso adattare il testo per avere anche una sezione iniziale “Introduzione” specifica per il repository meshcore-to-maps (descrizione breve, scopo, licenza, ecc.).
-
-
-
-
-
-
-
+<p align="center">
+  <em>
+    Per supporto o richieste di firmware personalizzati:
+    <a href="mailto:info@meshcoreitalia.it">info@meshcoreitalia.it</a>
+  </em>
+</p>
