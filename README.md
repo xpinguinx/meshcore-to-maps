@@ -122,7 +122,6 @@ cd meshcore-to-maps
 
 <h4>3.3 – Creare e attivare l’ambiente Python (virtualenv)</h4>
 <pre><code>cd ~/meshcore-to-maps
-
 python3 -m venv venv
 source venv/bin/activate
 </code></pre>
