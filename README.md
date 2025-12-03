@@ -123,10 +123,7 @@ cd meshcore-to-maps
 <h4>3.3 – Creare e attivare l’ambiente Python (virtualenv)</h4>
 <pre><code>cd ~/meshcore-to-maps
 
-# crea un virtualenv nella cartella venv (se non esiste già)
 python3 -m venv venv
-
-# attiva il virtualenv
 source venv/bin/activate
 </code></pre>
 
@@ -274,20 +271,11 @@ https://nodi.meshcoreitalia.it
   <li>il nodo osservatore deve essere correttamente configurato e online;</li>
   <li>
     è necessario eseguire il comando
-    <strong><code>advert</code></strong> sul nodo per annunciare la sua presenza
+    <strong><code>advert</code></strong> per annunciare la sua presenza
     alla rete mesh.
   </li>
 </ul>
 
 <p>
-Lo stesso vale per qualsiasi altro nodo che esegue il comando
-<code>advert</code>: con questo comando il nodo annuncia alla rete mesh la
-propria esistenza (nuovo nodo, nodo appena acceso o appena riconfigurato).
-</p>
-
-<p align="center">
-  <em>
-    Per supporto o richieste di firmware personalizzati:
-    <a href="mailto:info@meshcoreitalia.it">info@meshcoreitalia.it</a>
-  </em>
+Lo stesso comando <code>advert</code> dovrà essere inviato su qualsiasi altro nodo al fine di "annunciare" se stetto sull'intera rete meshlora.
 </p>
