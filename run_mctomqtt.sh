@@ -15,7 +15,7 @@ export MCTOMQTT_MQTT1_RETAIN="true"
 
 # NAMESPACE TEMATICO (uguale a quello che usi sul server decoder)
 # Esempio: meshcore/FCO/{PUBLIC_KEY}/packets e status
-export MCTOMQTT_IATA="FCO"
+export MCTOMQTT_IATA="ITA"
 export MCTOMQTT_TOPIC_PACKETS="meshcore/${MCTOMQTT_IATA}/{PUBLIC_KEY}/packets"
 export MCTOMQTT_TOPIC_STATUS="meshcore/${MCTOMQTT_IATA}/{PUBLIC_KEY}/status"
 
