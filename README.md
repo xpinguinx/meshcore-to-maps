@@ -1,7 +1,7 @@
 <h1 align="center">MeshCore – Nodi “Osservatori” &amp; meshcore-to-maps</h1>
 
 <p align="center">
-Strumento per la raccolta e l'analisi dei pacchetti MeshCore tramite MQTT e visualizzazione su mappa geografica.
+Strumento per la raccolta e l'analisi dei pacchetti MeshCore e visualizzazione su mappa geografica.
 </p>
 
 ---
