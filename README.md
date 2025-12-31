@@ -8,7 +8,7 @@ Strumento per la raccolta e l'analisi dei pacchetti MeshCore e visualizzazione s
 
 <h2>Cos'è un nodo "Osservatore"?</h2>
 
-I nodi MeshCore denominati <strong>“osservatori”</strong> sono nodi MeshCore connessi tramite MQTT che segnalano a questo servizio i pacchetti che ricevono.
+I nodi MeshCore denominati <strong>“osservatori”</strong> sono nodi MeshCore connessi che segnalano a questo servizio i pacchetti che ricevono.
 
 Raccogliendo dati da più Osservatori in diverse sedi, è possibile:
 
