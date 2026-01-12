@@ -1,3 +1,6 @@
+<img width="854" height="918" alt="nodimeshcoreitalia" src="https://github.com/user-attachments/assets/94743328-d355-4c23-ae99-45d334384e21" />
+
+
 <h1 align="center">MeshCore – Nodi “Osservatori” &amp; meshcore-to-maps</h1>
 
 <p align="center">
@@ -279,5 +282,3 @@ https://nodi.meshcoreitalia.it
 Lo stesso comando <code>advert</code> dovrà essere inviato su qualsiasi altro nodo al fine di "annunciare" se stetto sull'intera rete meshlora.
 </p>
 
-
-<img width="854" height="918" alt="nodimeshcoreitalia" src="https://github.com/user-attachments/assets/c25a8524-f1d8-4ae5-bd1e-26246e6f356c" />
