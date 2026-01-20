@@ -81,7 +81,7 @@ Per il momento è disponibile il download diretto dei seguenti firmware:
 
 👉 <a href="https://nextcloud.delink.it/index.php/s/qCHBFF7migwsx6W" target="_blank">Firmware MeshCore – Nextcloud</a>
 
-Firmware disponibili:
+Firmware disponibili (Repeater e Room Server):
 
 - <code>Heltec_t114-con_display</code>
 - <code>Heltec_t114-senza_display</code>
