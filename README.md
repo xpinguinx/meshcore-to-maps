@@ -117,7 +117,7 @@ Dopo il flashing:
 
 <h3>Passaggio 3 – Installazione e configurazione di meshcore-to-maps</h3>
 
-<strong>Si consiglia di flashare il S.O. sulla SD memory, la distribuzione "Raspberry Pi OS (32bit) - no desktop - tramite il tool "Raspberry Pi Imager". Inoltre, l'utente linux dovrà essere denominato: meshcore </strong>
+<strong>Si consiglia di flashare il S.O. sulla SD memory, la distribuzione "Raspberry Pi OS (32bit) - no desktop - tramite il tool "Raspberry Pi Imager" https://www.raspberrypi.com/software. Inoltre, l'utente linux dovrà essere denominato: meshcore </strong>
 
 <h4>3.1 – Installare i pacchetti di base</h4>
 <pre><code>sudo apt update
