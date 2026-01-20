@@ -83,8 +83,13 @@ Per il momento è disponibile il download diretto dei seguenti firmware:
 
 Firmware disponibili:
 
-- <code>Heltec_v3_repeater ver. 1.11.0</code>
-- <code>Heltec_v4_repeater ver. 1.11.0</code>
+- <code>Heltec_t114-con_display</code>
+- <code>Heltec_t114-senza_display</code>
+- <code>Heltec_v3</code>
+- <code>Heltec_t114-senza_display</code>
+- <code>LilyGo_T3S3_sx1262</code>
+- <code>LilyGo_TLora_V2_1_1_6</code>
+
 
 Per firmware personalizzati su altri dispositivi, inviare una richiesta a:  
 📧 <a href="mailto:info@meshcoreitalia.it">info@meshcoreitalia.it</a>  
@@ -111,6 +116,8 @@ Dopo il flashing:
 ---
 
 <h3>Passaggio 3 – Installazione e configurazione di meshcore-to-maps</h3>
+
+<strong>Si consiglia di flashare il S.O. sulla SD memory, la distribuzione "Raspberry Pi OS (32bit) - no desktop - tramite il tool "Raspberry Pi Imager". Inoltre, l'utente linux dovrà essere denominato: meshcore </strong>
 
 <h4>3.1 – Installare i pacchetti di base</h4>
 <pre><code>sudo apt update
